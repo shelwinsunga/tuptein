@@ -35,7 +35,13 @@ export default class Type extends React.Component{
     return (
       <div className = "type">
           <p className = "shadow">
-             {array[0]} {array[1]} {array[2]} {array[3]} {array[4]} {array[5]} {array[6]} {array[7]} {array[8]} {array[9]} 
+             {array.map((array,i) => (
+                 <>
+                 <span>
+                    {array} <span> </span>
+                 </span> 
+                 </>
+             ))}
           </p>
         </div>
     );
