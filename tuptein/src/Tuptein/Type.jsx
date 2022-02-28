@@ -9,8 +9,6 @@ export default class Type extends React.Component{
 
         this.state = {
             array:[],
-            text:'Test',
-            userInput: ''
         };
     }
 
