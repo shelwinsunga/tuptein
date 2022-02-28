@@ -1,7 +1,6 @@
 import React from 'react';
 import './Type.css';
 
-
 export default class Type extends React.Component{
     constructor(props){
         super(props);
@@ -10,6 +9,8 @@ export default class Type extends React.Component{
 
         this.state = {
             array:[],
+            text:'Test',
+            userInput: ''
         };
     }
 
@@ -23,7 +24,6 @@ export default class Type extends React.Component{
     resetArray(){
         const array = [];
         var randomWords = require('random-words');
-        //generates a random array with 100 elements
         for(let i = 0; i < 10; i++){
             array.push(randomWords(1));
         }
@@ -33,18 +33,18 @@ export default class Type extends React.Component{
   render(){
     const {array} = this.state;    
     return (
+    <div>
       <div className = "type">
           <p className = "shadow">
              {array.map((array,i) => (
-                 <>
                  <span>
                     {array} <span> </span>
                  </span> 
-                 </>
              ))}
           </p>
-        </div>
+       </div>
+        <button onClick={() => this.resetArray()}> Reset</button>
+    </div>
     );
   }
 }
-
