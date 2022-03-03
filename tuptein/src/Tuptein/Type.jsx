@@ -39,6 +39,10 @@ export default class Type extends React.Component{
         return userInput.replace(' ', '').split('').filter((s,i) => s === text[i]).length;
     }
 
+    onRestart = () => {
+      this.setState(this.state)
+    }
+
     onUserInputChange = (e) => {
         const v = e.target.value;
         this.setTimer();
@@ -84,30 +88,9 @@ export default class Type extends React.Component{
         })
     }
 
-//   render(){
-//     const {array} = this.state;    
-//     return (
-//     <div>
-//       <div className = "type">
-//           <Preview text = {this.state.text} userInput = {this.state.Userinput}/>
-//         <textarea
-//             value={this.state.userInput}
-            
-//         ></textarea>
-//           {/* <p className = "shadow">
-//              {array.map((array,i) => (
-//                  <span>
-//                     {array} <span> </span>
-//                  </span> 
-//              ))}
-//           </p> */}
-//        </div>
-//         <button onClick={() => this.resetArray()}> Reset</button>
-//     </div>
-//     );
-//   }
 render() {
     return (
+      <div>
           <div className="container" >
               <div className = "inner" style={{color: '#808080'}} >
               <Preview text={this.state.text} userInput={this.state.userInput}/>
@@ -121,10 +104,12 @@ render() {
               readOnly={this.state.finished}
             ></textarea>
               </div>
-            {/* <Speed sec={this.state.sec} symbols={this.state.symbols}/>
-            <div className="text-right">
-              <button className="btn btn-light" onClick={this.onRestart}>Restart</button>
-            </div> */}
+          </div>
+          <Speed sec={this.state.sec} symbols={this.state.symbols}/>
+            <div >
+              {/* <button onClick={this.onRestart()}>Restart</button> */}
+              <button onClick={() => this.onRestart()}>Restart</button>
+            </div>
           </div>
     );
   }

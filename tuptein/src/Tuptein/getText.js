@@ -1,5 +1,7 @@
+
 export default () => {
 
+  
   const texts = [
     "Here's to the crazy ones. The misfits. The rebels. The troublemakers."
     + " The round pegs in the square holes. The ones who see things differently."
@@ -23,5 +25,6 @@ export default () => {
   ];
   
   return texts[Math.floor(Math.random()*texts.length)];
+
 
 }
