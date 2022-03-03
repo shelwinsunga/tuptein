@@ -1,0 +1,17 @@
+.container {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: yellow;
+    /* important part */
+    display: grid;
+    place-items: center;
+    grid-template-areas: "inner-div";
+  }
+  
+  .inner {
+    height: 100px;
+    width: 100px;
+    /* important part */
+    grid-area: inner-div;
+  }
