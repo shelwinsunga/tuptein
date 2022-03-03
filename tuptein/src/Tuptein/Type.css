@@ -13,19 +13,22 @@ html {
     /* display: grid;
     place-items: center;
     grid-template-areas: "inner-div"; */
+  
   }
   .inner {
-    height: 400px;
+    height: 250px;
     width: 800px;
     /* important part */
     /* grid-area: inner-div; */
     position:absolute;
+   
   }
 .type{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     display: flex;
     justify-content:center;
+
     /* width: 65%;
     height: 65%; */
     /* outline: dashed 1px rgb(255, 255, 255); */
@@ -53,13 +56,11 @@ div textarea{
     height:50%; 
     top: 0;
     left:0;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+ 
 }
-textarea{
-    z-index:10;
-    
+
+button {
+    z-index:200;
 }
+
+

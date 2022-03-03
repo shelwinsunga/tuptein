@@ -22,7 +22,25 @@ export default class Type extends React.Component{
             finished: false
         };
     }
+    state = this.state;
     //if the input of the user is equal to the text, clear the interval and finish. 
+
+
+
+    onRestart = () => {
+      this.setState({
+        text: getText()
+      })
+    }
+    
+    onUserInputChange = (e) =>{
+      const v = e.target.value;
+      this.setState({
+          userInput: v
+      })
+  }
+  
+  
     onFinish(userInput) {
         if (userInput === this.state.text) {
           clearInterval(this.interval);
@@ -34,18 +52,12 @@ export default class Type extends React.Component{
     //
     //replaces the space with a space?
 
-    countCorrectSymbols(userInput) {
-        const text = this.state.text.replace(' ', '');
-        return userInput.replace(' ', '').split('').filter((s,i) => s === text[i]).length;
-    }
+    
 
-    onRestart = () => {
-      this.setState(this.state)
-    }
 
     onUserInputChange = (e) => {
         const v = e.target.value;
-        this.setTimer();
+        this.setTimer(v);
         this.onFinish(v)
         this.setState({
           userInput: v,
@@ -54,8 +66,13 @@ export default class Type extends React.Component{
       }
 
    
-
+      
     //this method will reset the array on first load
+
+    countCorrectSymbols(userInput) {
+      const text = this.state.text.replace(' ', '');
+      return userInput.replace(' ', '').split('').filter((s,i) => s === text[i]).length;
+  }
 
     setTimer() {
         if (!this.state.started) {
@@ -68,25 +85,20 @@ export default class Type extends React.Component{
         }
     }
 
-    componentDidMount(){ 
-        this.resetArray();
-    }
+    // componentDidMount(){ 
+    //     this.resetArray();
+    // }
  
-    resetArray(){
-        const array = [];
-        var randomWords = require('random-words');
-        for(let i = 0; i < 10; i++){
-            array.push(randomWords(1));
-        }
-        this.setState({array});
-    }
+    // resetArray(){
+    //     const array = [];
+    //     var randomWords = require('random-words');
+    //     for(let i = 0; i < 10; i++){
+    //         array.push(randomWords(1));
+    //     }
+    //     this.setState({array});
+    // }
 
-    onUserInputChange = (e) =>{
-        const v = e.target.value;
-        this.setState({
-            userInput: v
-        })
-    }
+    
 
 render() {
     return (
@@ -106,11 +118,15 @@ render() {
               </div>
           </div>
           <Speed sec={this.state.sec} symbols={this.state.symbols}/>
-            <div >
-              {/* <button onClick={this.onRestart()}>Restart</button> */}
-              <button onClick={() => this.onRestart()}>Restart</button>
+           
+            <div>
+            <button className = "button" onClick={() => this.onRestart()}>Restart</button>
+          
             </div>
+
+            
           </div>
+      
     );
   }
 }
